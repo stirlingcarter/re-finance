@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/fa62c117c7.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <title>Raj Shekhar</title>
+</head>
+
+<body class="light" id="top">
+  <header class="header center">
+    <h3>
+      <a href="https://github.com/stirlingcarter" class="link">SC.</a>
+    </h3>
+
+    <nav class="nav center">
+      <ul class="nav__list center">
+        <li class="nav__list-item">
+          <a class="link link--nav" href="#contact">Contact</a>
+        </li>
+      </ul>
+
+      <button type="button" aria-label="toggle theme" class="btn btn--icon">
+        <i aria-hidden="true" id="btn-theme" class="fas fa-moon"></i>
+      </button>
+
+      <button type="button" aria-label="toggle navigation" class="btn btn--icon nav__hamburger">
+        <i aria-hidden="true" class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- About -->
+    <div class="about center">
+      <h1> Real Estate Return Calculator</h1>
+      <!-- <h2 class="about__name">Simple & Complete</h2> -->
+      <p class="about__desc">
+        A sober look at the equity and net cash flow of any RE investment.
+      </p>
+    </div>
+
+    <section class="calculator center" id="calculator">
+      <form id="calcForm">
+        <label>Mortgage Term (Years)</label>
+        <input class="formbox" type="number" id="mortgageTerm" value="30" required><br>
+        <label>Principle Amount</label>
+        <input class="formbox" type="number" id="principle" value="200000" required><br>
+        <label>Down Payment </label>
+        <input class="formbox" type="number" id="downPayment" value="40000" required><br>
+        <label>Tax Rate </label>
+        <input class="formbox" type="number" id="taxRate" value="1.2" required><br>
+        <label>Insurance Rate </label>
+        <input class="formbox" type="number" id="insuranceRate" value="0.5" required><br>
+        <label>Maintenance Rate </label>
+        <input class="formbox" type="number" id="maintenanceRate" value="1" required><br>
+        <label>Rent Profit Rate </label>
+        <input class="formbox" type="number" id="rentProfitRate" value="5" required><br>
+        <label>Other Expenses Rate </label>
+        <input class="formbox" type="number" id="otherExpensesRate" value="2" required><br>
+        <label>Loan Interest Rate </label>
+        <input class="formbox" type="number" id="loanInterestRate" value="3" required><br>
+        <label>Appreciation Rate </label>
+        <input class="formbox" type="number" id="appreciationRate" value="3.5" required><br>
+        <label>Vacancy Rate </label>
+        <input class="formbox" type="number" id="vacancyRate" value="5" required><br>
+        <input type="submit" value="Submit" id="valSubmit">
+      </form>
+    </section>
+
+    <table id="outputTable">
+      <thead>
+        <tr>
+          <th id="column1" style="background-color: #cccccc" class="column1">Home Value</th>
+          <th class="column2">Debt Owed</th>
+          <th class="column1">Net Profit/Loss</th>
+          <th class="column2">Costs</th>
+          <th class="column1">Profit</th>
+          <th class="column2">Rental Profit</th>
+          <th class="column1">Tax</th>
+          <th class="column2">Insurance</th>
+          <th class="column1">Maintenance</th>
+          <th class="column2">Other Expenses</th>
+          <th class="column1">Principal</th>
+          <th class="column2">Interest</th>
+
+        </tr>
+      </thead>
+      <tbody id="outputBody">
+      </tbody>
+    </table>
+
+
+
+
+    <!-- Contact -->
+    <section class="section contact center" id="contact">
+      <h2 class="section__title">Contact</h2>
+      <a href="mailto:stirlingcarter@gmail.com">
+        <span class="btn btn--outline">Email me</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="https://github.com/rajshekhar26/cleanfolio-minimal" class="link footer__link">
+      Special thanks to Raj Shekhar
+    </a>
+  </footer>
+
+  <div class="scroll-container">
+    <div class="scroll-top">
+      <a aria-label="Scroll up" href="#top">
+        <i aria-hidden="true" class="fas fa-arrow-up"></i>
+      </a>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>

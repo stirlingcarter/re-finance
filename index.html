@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/fa62c117c7.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="styles.css" />
-  <title>Raj Shekhar</title>
+  <title>RE calc</title>
 </head>
 
 <body class="light" id="top">
@@ -42,44 +42,53 @@
       <h1> Real Estate Return Calculator</h1>
       <!-- <h2 class="about__name">Simple & Complete</h2> -->
       <p class="about__desc">
-        A sober look at the equity and net cash flow of any RE investment.
+        All values are annualized unless denoted otherwise.
       </p>
+      <p class="fields__desc">
+        *For rates in orange, switch to fixed annual amounts by using absolute values greater than 1. <br> e.g. 1000 = $1000 per year; .05 = 5% of home value per year. 
+       </p>
     </div>
+
 
     <section class="calculator center" id="calculator">
       <form id="calcForm">
-        <label>Mortgage Term (Years)</label>
+        <div class="form-inputs">
+        <label class="formLabel">Mortgage Term (yrs)</label>
         <input class="formbox" type="number" id="mortgageTerm" value="30" required><br>
-        <label>Principle Amount</label>
-        <input class="formbox" type="number" id="principle" value="200000" required><br>
-        <label>Down Payment </label>
-        <input class="formbox" type="number" id="downPayment" value="40000" required><br>
-        <label>Tax Rate </label>
-        <input class="formbox" type="number" id="taxRate" value="1.2" required><br>
-        <label>Insurance Rate </label>
-        <input class="formbox" type="number" id="insuranceRate" value="0.5" required><br>
-        <label>Maintenance Rate </label>
-        <input class="formbox" type="number" id="maintenanceRate" value="1" required><br>
-        <label>Rent Profit Rate </label>
-        <input class="formbox" type="number" id="rentProfitRate" value="5" required><br>
-        <label>Other Expenses Rate </label>
-        <input class="formbox" type="number" id="otherExpensesRate" value="2" required><br>
-        <label>Loan Interest Rate </label>
-        <input class="formbox" type="number" id="loanInterestRate" value="3" required><br>
-        <label>Appreciation Rate </label>
-        <input class="formbox" type="number" id="appreciationRate" value="3.5" required><br>
-        <label>Vacancy Rate </label>
-        <input class="formbox" type="number" id="vacancyRate" value="5" required><br>
-        <input type="submit" value="Submit" id="valSubmit">
+        <label class="formLabel">Principle Amount</label>
+        <input class="formbox" type="number" id="principle" value="600000" step="any" required><br>
+        <label class="formLabel">Down Payment </label>
+        <input class="formbox" type="number" id="downPayment" value="150000" step="any" required><br>
+        <label class="formLabel">Tax Rate </label>
+        <input class="formbox" type="number" id="taxRate" value="0.02" step="any" required><br>
+        <label class="formLabel">Insurance Rate </label>
+        <input class="formbox" type="number" id="insuranceRate" value="0.003" step="any" required><br>
+        <label class="formLabel">Loan Interest Rate </label>
+        <input class="formbox" type="number" id="loanInterestRate" value=".065" step="any" required><br>
+        <label class="formLabel">Vacancy Rate </label>
+        <input class="formbox" type="number" id="vacancyRate" value=".5" step="any" required><br> 
+        <label class="formLabel" style="color: orange">Maintenance Rate</label>
+        <input class="formbox" type="number" id="maintenanceRate" value=".0067" step="any" required><br>
+        <label class="formLabel" style="color: orange">Rent Profit Rate (monthly)</label>
+        <input class="formbox" type="number" id="rentProfitRate" value=".00625" step="any" required><br>
+        <label class="formLabel" style="color: orange">Other Expenses Rate</label>
+        <input class="formbox" type="number" id="otherExpensesRate" value="0" step="any" required><br>
+        <label class="formLabel" style="color: orange">Appreciation Rate</label>
+        <input class="formbox" type="number" id="appreciationRate" value=".025" step="any" required><br>       
+      </div>
+      <div class="btn form-submit">
+        <input type="submit" value="Submit">
+      </div>
       </form>
     </section>
 
     <table id="outputTable">
       <thead>
         <tr>
-          <th id="column1" style="background-color: #cccccc" class="column1">Home Value</th>
+          <th id="column2" style="background-color: black" class="column1">Year</th>
+          <th id="column1" style="background-color: black" class="column1">Home Value</th>
           <th class="column2">Debt Owed</th>
-          <th class="column1">Net Profit/Loss</th>
+          <th class="column1">Profit T.D.</th>
           <th class="column2">Costs</th>
           <th class="column1">Profit</th>
           <th class="column2">Rental Profit</th>
@@ -87,8 +96,8 @@
           <th class="column2">Insurance</th>
           <th class="column1">Maintenance</th>
           <th class="column2">Other Expenses</th>
-          <th class="column1">Principal</th>
-          <th class="column2">Interest</th>
+          <th class="column1">Principal Paid</th>
+          <th class="column2">Interest Paid</th>
 
         </tr>
       </thead>

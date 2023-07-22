@@ -70,8 +70,8 @@ function calculateMonthlyPayment(principle, loanInterestRate, mortgageTerm) {
     return monthlyPayment;
 }
 
-function calculateRealEstateReturn(mortgageTerm, principle, downPayment, taxRate, insuranceRate, maintenanceRate, rentProfitRate, otherExpensesRate, loanInterestRate, appreciationRate, vacancyRate) {
-    
+function calculateRealEstateReturn(mortgageTerm, principle, downPayment, taxRate, insuranceRate, maintenanceRate, rentProfitRate, otherExpensesRate, loanInterestRate, appreciationRate, vacancyRate, rentalAppreciationInterval) {
+    alert("ey")
     let staticMaintenance = true;
     let staticOtherExpenses = true;
     let staticRentProfit = true;
@@ -97,9 +97,14 @@ function calculateRealEstateReturn(mortgageTerm, principle, downPayment, taxRate
     
     let data = [];
 
+    let virtualHomeValue = homeValue;
+
     for (let year = 1; year <= mortgageTerm; year++) {
         homeValue = staticAppreciation ? homeValue + appreciationRate : homeValue * (1 + appreciationRate);
-        let rentProfit = staticRentProfit ? 12 * (rentProfitRate * (1-vacancyRate)) : homeValue * rentProfitRate * 12 * (1 - vacancyRate);
+        if (year % rentalAppreciationInterval == 0) {
+            virtualHomeValue = homeValue;
+        }
+        let rentProfit = staticRentProfit ? 12 * (rentProfitRate * (1-vacancyRate)) : virtualHomeValue * rentProfitRate * 12 * (1 - vacancyRate);
         let tax = homeValue * taxRate;
         let insurance = homeValue * insuranceRate;
         let maintenance = staticMaintenance ? maintenanceRate : homeValue * maintenanceRate;
@@ -154,9 +159,9 @@ window.onload = function() {
         let loanInterestRate = Number(document.getElementById("loanInterestRate").value);
         let appreciationRate = Number(document.getElementById("appreciationRate").value);
         let vacancyRate = Number(document.getElementById("vacancyRate").value);
-        
+        let rentalAppreciationInterval = 1;
 
-        let result = calculateRealEstateReturn(mortgageTerm, principle, downPayment, taxRate, insuranceRate, maintenanceRate, rentProfitRate, otherExpensesRate, loanInterestRate, appreciationRate, vacancyRate);
+        let result = calculateRealEstateReturn(mortgageTerm, principle, downPayment, taxRate, insuranceRate, maintenanceRate, rentProfitRate, otherExpensesRate, loanInterestRate, appreciationRate, vacancyRate, rentalAppreciationInterval);
 
         let outputBody = document.getElementById("outputBody");
         outputBody.innerHTML = "";

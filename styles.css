@@ -365,6 +365,7 @@ input[type="submit"]:active {
 .calculator {
   justify-content: center;
   padding-top: 1em;
+  padding-left: 2em;
 }
 
 .form-inputs {
@@ -379,7 +380,7 @@ input[type="submit"]:active {
   align-items: center;
   padding-bottom: 2em;
   font-size: 1.5rem;
-  padding-right: 2em;
+  padding-right: 4em;
 }
 
 input[type="number"]::-webkit-inner-spin-button,

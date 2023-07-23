@@ -1,51 +1,28 @@
-const body = document.body
+const body = document.body;
 
-const btnTheme = document.querySelector('.fa-moon')
-const btnHamburger = document.querySelector('.fa-bars')
+const btnHamburger = document.querySelector('.fa-bars');
 
-const addThemeClass = (bodyClass, btnClass) => {
-  body.classList.add(bodyClass)
-  btnTheme.classList.add(btnClass)
-}
+const addThemeClass = (bodyClass) => {
+  body.classList.add(bodyClass);
+};
 
-const getBodyTheme = localStorage.getItem('portfolio-theme')
-const getBtnTheme = localStorage.getItem('portfolio-btn-theme')
-
-addThemeClass(getBodyTheme, getBtnTheme)
-
-const isDark = () => body.classList.contains('dark')
-
-const setTheme = (bodyClass, btnClass) => {
-
-	body.classList.remove(localStorage.getItem('portfolio-theme'))
-	btnTheme.classList.remove(localStorage.getItem('portfolio-btn-theme'))
-
-  addThemeClass(bodyClass, btnClass)
-
-	localStorage.setItem('portfolio-theme', bodyClass)
-	localStorage.setItem('portfolio-btn-theme', btnClass)
-}
-
-const toggleTheme = () =>
-	isDark() ? setTheme('light', 'fa-moon') : setTheme('dark', 'fa-sun')
-
-btnTheme.addEventListener('click', toggleTheme)
+addThemeClass('dark');
 
 const displayList = () => {
-	const navUl = document.querySelector('.nav__list')
+  const navUl = document.querySelector('.nav__list');
 
-	if (btnHamburger.classList.contains('fa-bars')) {
-		btnHamburger.classList.remove('fa-bars')
-		btnHamburger.classList.add('fa-times')
-		navUl.classList.add('display-nav-list')
-	} else {
-		btnHamburger.classList.remove('fa-times')
-		btnHamburger.classList.add('fa-bars')
-		navUl.classList.remove('display-nav-list')
-	}
-}
+  if (btnHamburger.classList.contains('fa-bars')) {
+    btnHamburger.classList.remove('fa-bars');
+    btnHamburger.classList.add('fa-times');
+    navUl.classList.add('display-nav-list');
+  } else {
+    btnHamburger.classList.remove('fa-times');
+    btnHamburger.classList.add('fa-bars');
+    navUl.classList.remove('display-nav-list');
+  }
+};
 
-btnHamburger.addEventListener('click', displayList)
+btnHamburger.addEventListener('click', displayList);
 
 const scrollUp = () => {
 	const btnScrollTop = document.querySelector('.scroll-top')
@@ -70,7 +47,7 @@ function calculateMonthlyPayment(principle, loanInterestRate, mortgageTerm) {
     return monthlyPayment;
 }
 
-function calculateRealEstateReturn(mortgageTerm, principle, downPayment, taxRate, insuranceRate, maintenanceRate, rentProfitRate, otherExpensesRate, loanInterestRate, appreciationRate, vacancyRate) {
+function calculateRealEstateReturn(mortgageTerm, principle, downPayment, taxRate, insuranceRate, maintenanceRate, rentProfitRate, otherExpensesRate, loanInterestRate, appreciationRate, vacancyRate, rentalAppreciationInterval) {
     
     let staticMaintenance = true;
     let staticOtherExpenses = true;
@@ -97,10 +74,14 @@ function calculateRealEstateReturn(mortgageTerm, principle, downPayment, taxRate
     
     let data = [];
 
+    let virtualHomeValue = homeValue;
+
     for (let year = 1; year <= mortgageTerm; year++) {
         homeValue = staticAppreciation ? homeValue + appreciationRate : homeValue * (1 + appreciationRate);
-        let rentProfit = staticRentProfit ? 12 * (rentProfitRate * (1-vacancyRate)) : homeValue * rentProfitRate * 12 * (1 - vacancyRate);
-        let tax = homeValue * taxRate;
+        if (year % rentalAppreciationInterval == 0) {
+            virtualHomeValue = homeValue;
+        }
+        let rentProfit = staticRentProfit ? 12 * (rentProfitRate * (1-vacancyRate)) : virtualHomeValue * rentProfitRate * 12 * (1 - vacancyRate);        let tax = homeValue * taxRate;
         let insurance = homeValue * insuranceRate;
         let maintenance = staticMaintenance ? maintenanceRate : homeValue * maintenanceRate;
         let otherExpenses = staticOtherExpenses ? otherExpensesRate : homeValue * otherExpensesRate;
@@ -154,9 +135,9 @@ window.onload = function() {
         let loanInterestRate = Number(document.getElementById("loanInterestRate").value);
         let appreciationRate = Number(document.getElementById("appreciationRate").value);
         let vacancyRate = Number(document.getElementById("vacancyRate").value);
-        
+        let rentalAppreciationInterval = Number(document.getElementById("rentalAppreciationInterval").value);
 
-        let result = calculateRealEstateReturn(mortgageTerm, principle, downPayment, taxRate, insuranceRate, maintenanceRate, rentProfitRate, otherExpensesRate, loanInterestRate, appreciationRate, vacancyRate);
+        let result = calculateRealEstateReturn(mortgageTerm, principle, downPayment, taxRate, insuranceRate, maintenanceRate, rentProfitRate, otherExpensesRate, loanInterestRate, appreciationRate, vacancyRate, rentalAppreciationInterval);
 
         let outputBody = document.getElementById("outputBody");
         outputBody.innerHTML = "";

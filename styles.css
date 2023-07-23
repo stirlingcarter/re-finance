@@ -273,6 +273,11 @@ main {
   max-width: 600px;
 }
 
+.about__desc__small {
+  font-size: .8rem;
+  max-width: 600px;
+}
+
 .fields__desc {
   font-size: 0.8em;
   max-width: 700px;
@@ -365,6 +370,7 @@ input[type="submit"]:active {
 .calculator {
   justify-content: center;
   padding-top: 1em;
+  padding-left: 2em;
 }
 
 .form-inputs {
@@ -379,7 +385,7 @@ input[type="submit"]:active {
   align-items: center;
   padding-bottom: 2em;
   font-size: 1.5rem;
-  padding-right: 2em;
+  padding-right: 4em;
 }
 
 input[type="number"]::-webkit-inner-spin-button,

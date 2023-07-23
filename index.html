@@ -22,13 +22,12 @@
     <nav class="nav center">
       <ul class="nav__list center">
         <li class="nav__list-item">
+          <a class="link link--nav" href="#details">Details</a>
+        </li>
+        <li class="nav__list-item">
           <a class="link link--nav" href="#contact">Contact</a>
         </li>
       </ul>
-
-      <button type="button" aria-label="toggle theme" class="btn btn--icon">
-        <i aria-hidden="true" id="btn-theme" class="fas fa-moon"></i>
-      </button>
 
       <button type="button" aria-label="toggle navigation" class="btn btn--icon nav__hamburger">
         <i aria-hidden="true" class="fas fa-bars"></i>
@@ -67,6 +66,8 @@
         <input class="formbox" type="number" id="loanInterestRate" value=".065" step="any" required><br>
         <label class="formLabel">Vacancy Rate </label>
         <input class="formbox" type="number" id="vacancyRate" value=".5" step="any" required><br> 
+        <label class="formLabel">Years b/w Rent Adjustment</label>
+        <input class="formbox" type="number" id="rentalAppreciationInterval" value="1" step="1" required><br> 
         <label class="formLabel" style="color: orange">Maintenance Rate</label>
         <input class="formbox" type="number" id="maintenanceRate" value=".0067" step="any" required><br>
         <label class="formLabel" style="color: orange">Rent Profit Rate (monthly)</label>
@@ -98,7 +99,6 @@
           <th class="column2">Other Expenses</th>
           <th class="column1">Principal Paid</th>
           <th class="column2">Interest Paid</th>
-
         </tr>
       </thead>
       <tbody id="outputBody">
@@ -107,7 +107,17 @@
 
 
 
-
+    <!-- Details -->
+    <section class="section contact center" id="details">
+      <p class="about__desc">
+        Assumptions and limitations: <br><br>
+      </p>
+      <p class="about__desc__small">
+        &bull;&nbsp;&nbsp;Profit to date is expressed excluding your down payment, which is considered outside as an initial investment.<br>
+        &bull;&nbsp;&nbsp;Inflation is not considered, but can be accurately represented by subtracting the inflation rate from the appreciation rate.<br>
+        &bull;&nbsp;&nbsp;"Years b/w rent adjustment" denotes how often rent is raised, e.g. every 1, 2, 3 etc. years. Constant rents will ignore this property, but both constant and variable rents will be affected by vacancy rates.<br>
+      </p>
+    </section>
     <!-- Contact -->
     <section class="section contact center" id="contact">
       <h2 class="section__title">Contact</h2>

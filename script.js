@@ -99,16 +99,16 @@ function calculateRealEstateReturn(mortgageTerm, principle, downPayment, taxRate
             year,
             formatNumber(homeValue),
             formatNumber(loanAmount),
-            formatNumber(netProfitLoss),
-            formatNumber(totalCosts),
             formatNumber(profit),
             formatNumber(rentProfit),
+            formatNumber(totalCosts),
+            formatNumber(principalPaid),
+            formatNumber(interestForTheYear),
             formatNumber(tax),
             formatNumber(insurance),
             formatNumber(maintenance),
             formatNumber(otherExpenses),
-            formatNumber(principalPaid),
-            formatNumber(interestForTheYear)
+            formatNumber(netProfitLoss)
         ]); 
     }
     
@@ -141,6 +141,24 @@ window.onload = function() {
 
         let outputBody = document.getElementById("outputBody");
         outputBody.innerHTML = "";
+
+        // Creating and adding the header row
+        let headerRow = document.createElement("tr");
+        let headers = ["Year", "Home Value", "Debt Owed", "Cash Flow", "Rental Profit", "Total Costs", "Principal Paid", "Interest Paid", "Tax", "Insurance", "Maintenance", "Other Expenses", "Profit T.D."];
+        let columnClasses = ["column1", "column1", "column2", "column1", "column2", "column2", "column1", "column2", "column1", "column2", "column1", "column2", "column1"];
+        let backgroundColors = ["", "", "", "", "", "", "#330000", "#330000", "#330000", "#330000", "#330000", "#330000", ""];
+
+        for(let i = 0; i < headers.length; i++) {
+            let th = document.createElement("th");
+            th.textContent = headers[i];
+            th.className = columnClasses[i];
+            if(backgroundColors[i] !== "") {
+                th.style.backgroundColor = backgroundColors[i];
+            }
+            headerRow.appendChild(th);
+        }
+        outputBody.appendChild(headerRow);
+
         for(let row of result) {
             let tr = document.createElement("tr");
 			let i = 0;

@@ -20,14 +20,18 @@
     </h3>
 
     <nav class="nav center">
+      <div style="padding-left:1.7em" >
+
       <ul class="nav__list center">
         <li class="nav__list-item">
           <a class="link link--nav" href="#details">Details</a>
         </li>
         <li class="nav__list-item">
-          <a class="link link--nav" href="#contact">Contact</a>
+          <a class="link link--nav" href=#contact>Contact</a>
         </li>
+
       </ul>
+    </div>
 
       <button type="button" aria-label="toggle navigation" class="btn btn--icon nav__hamburger">
         <i aria-hidden="true" class="fas fa-bars"></i>
@@ -37,22 +41,107 @@
 
   <main>
     <!-- About -->
+
+
     <div class="about center">
       <h1> Real Estate Calculator</h1>
-      <h2 class="about__name">Simple IRR and Cash Flow projection</h2>
+      <h2 class="about__name" style="padding-bottom: 1.4em">Simple IRR and Cash Flow projection</h2>
     </div>
 
+    <form id="calcForm">
+      <div class="grid">
+        <div class="about center">
+          <h4>Mortgage Term</h4>
+          <h5 class="about__name" style="padding-bottom: .3em;">Length of your mortgage in years</h5>
+          <input class="prettyInput" type="number" id="mortgageTerm" value="30" required>
+        </div>
 
+        <div class="about center">
+          <h4>Principle Amount</h4>
+          <h5 class="about__name" style="padding-bottom: .3em;">Sale price of your home, minus down payment </h5>
+          <input class="prettyInput" type="number" id="principle" value="240000" step="any" required>
+        </div>
+
+        <div class="about center">
+          <h4>Down Payment</h4>
+          <h5 class="about__name" style="padding-bottom: .3em;">Your initial down payment </h5>
+          <input class="prettyInput" type="number" id="downPayment" value="60000" step="any" required>
+        </div>
+
+        <div class="about center">
+          <h4>Total Tax Rate</h4>
+          <h5 class="about__name" style="padding-bottom: .3em;">Annual federal taxes, plus any local taxes </h5>
+          <input class="prettyInput" type="number" id="taxRate" value="0.0125" step="any" required>
+        </div>
+
+        <div class="about center">
+          <h4>Insurance Rate</h4>
+          <h5 class="about__name" style="padding-bottom: .3em;">Annual home insurance rate</h5>
+          <input class="prettyInput" type="number" id="insuranceRate" value="0.003" step="any" required>
+        </div>
+
+        <div class="about center">
+          <h4>Interest Rate</h4>
+          <h5 class="about__name" style="padding-bottom: .3em;">Your loan interest rate</h5>
+          <input class="prettyInput" type="number" id="loanInterestRate" value=".065" step="any" required>
+        </div>
+
+        <div class="about center">
+          <h4>Vacancy Rate</h4>
+          <h5 class="about__name" style="padding-bottom: .3em;">Vacancy rate</h5>
+          <input class="prettyInput" type="number" id="vacancyRate" value=".1" step="any" required>
+        </div>
+
+        <div class="about center">
+          <h4>Rent Raise Frequency</h4>
+          <h5 class="about__name" style="padding-bottom: .3em;">Years between adjusting rent to market</h5>
+          <input class="prettyInput" type="number" id="rentalAppreciationInterval" value="1" step="1" required>
+        </div>
+
+        <div class="about center" style="color: orange">
+          <h4>Maintenance Rate</h4>
+          <h5 class="about__name" style="padding-bottom: .3em;">as % of home value, or flat rate<span
+              style="color: orange;">*</span></h5>
+          <input class="prettyInput" type="number" id="maintenanceRate" value=".0067" step="any" required>
+        </div>
+
+        <div class="about center" style="color: orange">
+          <h4>Rental Profit Rate</h4>
+          <h5 class="about__name" style="padding-bottom: .3em;">as MONTHLY % of home value, or flat rate<span
+              style="color: orange;">*</span></h5>
+          <input class="prettyInput" type="number" id="rentProfitRate" value=".008" step="any" required>
+        </div>
+
+        <div class="about center" style="color: orange">
+          <h4>Other Expenses Rate</h4>
+          <h5 class="about__name" style="padding-bottom: .3em;">as % of home value, or flat rate<span
+              style="color: orange;">*</span></h5>
+          <input class="prettyInput" type="number" id="otherExpensesRate" value="0" step="any" required>
+        </div>
+
+        <div class="about center" style="color: orange">
+          <h4>Appreciation Rate</h4>
+          <h5 class="about__name" style="padding-bottom: .3em;">as % of home value, or flat rate<span
+              style="color: orange;">*</span></h5>
+          <input class="prettyInput" type="number" id="appreciationRate" value=".025" step="any" required>
+        </div>
+      </div>
+
+
+      <div class="btn form-submit">
+        <input type="submit" value="Calculate">
+      </div>
+
+    </form>
+
+
+
+
+    <!-- 
     <section class="calculator center" id="calculator">
       <form id="calcForm">
         <div class="form-inputs">
 
-          <div class="input-group">
-            <label class="formLabel">Mortgage Term:</label>
-            <input class="formbox" type="number" id="mortgageTerm" value="30" required>
-            <label class="fieldDescription" style="font-size: small; text-align: right; flex: 2">How many years is your
-              mortgage? </label><br>
-          </div>
 
           <div class="input-group">
             <label class="formLabel">Principle Amount:</label>
@@ -125,7 +214,7 @@
           <input type="submit" value="Calculate!">
         </div>
       </form>
-    </section>
+    </section> -->
 
     <section id="irr">
 

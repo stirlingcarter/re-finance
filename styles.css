@@ -19,6 +19,41 @@ html {
   scroll-behavior: smooth;
 }
 
+.prettyInput {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: linear-gradient(45deg, yellow, red);
+  color: black;
+  width: 140px;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  flex-basis: 50%;
+}
+.nav {
+  display: flex;
+  justify-content: flex-end; /* or use space-between */
+  margin-left: auto; 
+}
+.about {
+  flex-direction: column;
+  margin-top: 1.3em; /* Adjust this value as needed to change the space between the divs */
+}
+
+.about__name {
+  color: var(--clr-primary);
+}
+
+/* Adding a grid system */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
 body {
   font-family: "Poppins", sans-serif;
   line-height: 1.5;
@@ -207,10 +242,6 @@ button {
   layout
 ========*/
 
-.center {
-  display: flex;
-  align-items: center;
-}
 
 
 .formLabel {
@@ -253,15 +284,6 @@ main {
 .nav__hamburger {
   display: none;
   width: 1em;
-}
-
-.about {
-  flex-direction: column;
-  margin-top: 3em;
-}
-
-.about__name {
-  color: var(--clr-primary);
 }
 
 .about__role {

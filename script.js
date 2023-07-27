@@ -24,6 +24,10 @@ const displayList = () => {
 
 btnHamburger.addEventListener('click', displayList);
 
+function rowsToColumns(rows) {
+    return rows[0].map((_, i) => rows.map(row => row[i]));
+}
+
 const scrollUp = () => {
 	const btnScrollTop = document.querySelector('.scroll-top')
 
@@ -115,10 +119,66 @@ function calculateRealEstateReturn(mortgageTerm, principle, downPayment, taxRate
     return data;
 }
 
+
+function calculateMIRR(cashflows, financeRate, reinvestRate) {
+    let negativeCashFlows = 0;
+    let positiveCashFlows = 0;
+
+    // Sum negative and positive cash flows
+    for (let i = 0; i < cashflows.length; i++) {
+        if (cashflows[i] < 0) {
+            negativeCashFlows += cashflows[i] / Math.pow(1 + financeRate, i);
+        } else {
+            positiveCashFlows += cashflows[i] * Math.pow(1 + reinvestRate, cashflows.length - 1 - i);
+        }
+    }
+
+    if (negativeCashFlows < 0 && positiveCashFlows > 0) {
+        // Calculate MIRR
+        let mirr = Math.pow(-positiveCashFlows / negativeCashFlows, 1 / (cashflows.length - 1)) - 1;
+        return mirr;
+    } else {
+        throw "Invalid cash flow sequence for MIRR calculation";
+    }
+}
+
+function calculateIRR(cashflows) {
+    const maxIteration = 100;  // Maximum number of iterations
+    const acceptedError = 0.00001;  // Required precision
+    let guessRate = 0.1;  // Initial guess rate
+
+    for (let i = 0; i < maxIteration; i++) {
+        let NPV = 0;
+        let derivativeNPV = 0;
+        for (let j = 0; j < cashflows.length; j++) {
+            NPV += cashflows[j] / Math.pow(1 + guessRate, j);
+            derivativeNPV -= j * cashflows[j] / Math.pow(1 + guessRate, j + 1);
+        }
+        let newRate = guessRate - NPV / derivativeNPV;
+        if (Math.abs(newRate - guessRate) <= acceptedError) {
+            return (newRate * 100).toFixed(2) + '%';
+        }
+        guessRate = newRate;
+    }
+    return 'No solution found in ' + maxIteration + ' iterations';
+}
+
 function formatNumber(num) {
     return Math.round(num).toLocaleString();
 }
-
+function unformatNumber(str) {
+    if (typeof str !== 'string') {
+        console.error('Expected a string, but got:', typeof str, str);
+        return str;
+    }
+    console.log(str);
+    return Number(str.replace(/,/g, ''));
+}
+function getCashFlows(initial, flows, finalSale){
+    flows[0] -= initial;
+    flows[flows.length-1] += finalSale;
+    return flows; 
+}
 
 window.onload = function() {
     document.getElementById("calcForm").onsubmit = function(e) {
@@ -138,6 +198,20 @@ window.onload = function() {
         let rentalAppreciationInterval = Number(document.getElementById("rentalAppreciationInterval").value);
 
         let result = calculateRealEstateReturn(mortgageTerm, principle, downPayment, taxRate, insuranceRate, maintenanceRate, rentProfitRate, otherExpensesRate, loanInterestRate, appreciationRate, vacancyRate, rentalAppreciationInterval);
+
+        let cols = rowsToColumns(result)
+        let cashflows = cols[3].map(unformatNumber)
+        let salePrice = unformatNumber(cols[1][mortgageTerm-1]);
+        let adjCashflows = getCashFlows(downPayment, cashflows, salePrice)
+        let irr = calculateIRR(adjCashflows)
+
+        //add new section to display irr above the table 
+        let irrSection = document.getElementById("irr");
+        irrSection.innerHTML = "";
+        let irrHeader = document.createElement("h2");
+        irrHeader.textContent = "IRR: " + irr;
+        irrSection.appendChild(irrHeader);
+
 
         let outputBody = document.getElementById("outputBody");
         outputBody.innerHTML = "";

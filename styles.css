@@ -373,9 +373,14 @@ input[type="submit"]:active {
 
 }
 
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .form-inputs {
   flex-grow: 1;
-  padding-left: 9em;
   padding-bottom: 1em;
 }
 
@@ -396,9 +401,17 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
+.fieldDescription {
+  flex: 2;
+  text-align: right;
+  font-size: small;
+}
+
 .formbox {
   align-items: right;
   color: #90a0d9;
+  flex: 1;
+  padding-left: .5em;
 }
 
 #edit_values {

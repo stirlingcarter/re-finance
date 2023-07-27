@@ -38,51 +38,98 @@
   <main>
     <!-- About -->
     <div class="about center">
-      <h1> Real Estate Return Calculator</h1>
-      <!-- <h2 class="about__name">Simple & Complete</h2> -->
-      <p class="about__desc">
-        All values are annualized unless denoted otherwise.
-      </p>
-      <p class="fields__desc">
-        *For rates in orange, switch to fixed annual amounts by using absolute values greater than 1. <br> e.g. 1000 = $1000 per year; .05 = 5% of home value per year. 
-       </p>
+      <h1> Real Estate Calculator</h1>
+      <h2 class="about__name">Simple IRR and Cash Flow projection</h2>
     </div>
 
 
     <section class="calculator center" id="calculator">
       <form id="calcForm">
         <div class="form-inputs">
-        <label class="formLabel">Mortgage Term (yrs)</label>
-        <input class="formbox" type="number" id="mortgageTerm" value="30" required><br>
-        <label class="formLabel">Principle Amount</label>
-        <input class="formbox" type="number" id="principle" value="240000" step="any" required><br>
-        <label class="formLabel">Down Payment </label>
-        <input class="formbox" type="number" id="downPayment" value="60000" step="any" required><br>
-        <label class="formLabel">Tax Rate </label>
-        <input class="formbox" type="number" id="taxRate" value="0.0125" step="any" required><br>
-        <label class="formLabel">Insurance Rate </label>
-        <input class="formbox" type="number" id="insuranceRate" value="0.003" step="any" required><br>
-        <label class="formLabel">Loan Interest Rate </label>
-        <input class="formbox" type="number" id="loanInterestRate" value=".065" step="any" required><br>
-        <label class="formLabel">Vacancy Rate </label>
-        <input class="formbox" type="number" id="vacancyRate" value=".1" step="any" required><br> 
-        <label class="formLabel">Years b/w Rent Adjustment</label>
-        <input class="formbox" type="number" id="rentalAppreciationInterval" value="1" step="1" required><br> 
-        <label class="formLabel" style="color: orange">Maintenance Rate</label>
-        <input class="formbox" type="number" id="maintenanceRate" value=".0067" step="any" required><br>
-        <label class="formLabel" style="color: orange">Rent Profit Rate (monthly)</label>
-        <input class="formbox" type="number" id="rentProfitRate" value=".008" step="any" required><br>
-        <label class="formLabel" style="color: orange">Other Expenses Rate</label>
-        <input class="formbox" type="number" id="otherExpensesRate" value="0" step="any" required><br>
-        <label class="formLabel" style="color: orange">Appreciation Rate</label>
-        <input class="formbox" type="number" id="appreciationRate" value=".025" step="any" required><br>       
-      </div>
-      <div class="btn form-submit">
-        <input type="submit" value="Calculate!">
-      </div>
+
+          <div class="input-group">
+            <label class="formLabel">Mortgage Term:</label>
+            <input class="formbox" type="number" id="mortgageTerm" value="30" required>
+            <label class="fieldDescription" style="font-size: small; text-align: right; flex: 2">How long is your
+              mortgage? (years) </label><br>
+          </div>
+
+          <div class="input-group">
+            <label class="formLabel">Principle Amount:</label>
+            <input class="formbox" type="number" id="principle" value="240000" step="any" required>
+            <label class="fieldDescription">Sale price of your home, minus down payment </label><br>
+          </div>
+
+<div class="input-group">
+          <label class="formLabel">Down Payment: </label>
+          <input class="formbox" type="number" id="downPayment" value="60000" step="any" required>
+          <label class="fieldDescription" style="font-size: small;">Your initial down payment </label><br>
+        </div>
+
+          <div class="input-group">
+          <label class="formLabel">Total Tax Rate: </label>
+          <input class="formbox" type="number" id="taxRate" value="0.0125" step="any" required>
+          <label class="fieldDescription" style="font-size: small;">Annual federal taxes, plus any local taxes </label><br>
+        </div>
+
+          <div class="input-group">
+          <label class="formLabel">Insurance Rate: </label>
+          <input class="formbox" type="number" id="insuranceRate" value="0.003" step="any" required>
+          <label class="fieldDescription" style="font-size: small;">Annual home insurance costs</label><br>
+        </div>
+
+          <div class="input-group">
+          <label class="formLabel">Interest Rate: </label>
+          <input class="formbox" type="number" id="loanInterestRate" value=".065" step="any" required>
+          <label class="fieldDescription" style="font-size: small;">Your loan interest rate</label><br>
+        </div>
+
+          <div class="input-group">
+          <label class="formLabel">Vacancy Rate: </label>
+          <input class="formbox" type="number" id="vacancyRate" value=".1" step="any" required>
+          <label class="fieldDescription" style="font-size: small;">Vacancy rate; or, the % of your home you'll occupy</label><br>
+        </div>
+
+          <div class="input-group">
+          <label class="formLabel">Rent Raise Freq:</label>
+          <input class="formbox" type="number" id="rentalAppreciationInterval" value="1" step="1" required>
+          <label class="fieldDescription" style="font-size: small;">years between adjusting rent to market</label><br>
+        </div>
+
+          <div class="input-group">
+          <label class="formLabel" style="color: orange">Maintenance Rate:</label>
+          <input class="formbox" type="number" id="maintenanceRate" value=".0067" step="any" required>
+          <label class="fieldDescription" style="font-size: small;">as % of home value (or flat, for vals >1)</label><br>
+        </div>
+
+          <div class="input-group">
+          <label class="formLabel" style="color: orange">Rent Profit Rate:</label>
+          <input class="formbox" type="number" id="rentProfitRate" value=".008" step="any" required>
+          <label class="fieldDescription" style="font-size: small;">(MONTHLY) as % of home value (or flat, for vals >1)</label><br>
+        </div>
+
+          <div class="input-group">
+          <label class="formLabel" style="color: orange">Other Expenses Rate:</label>
+          <input class="formbox" type="number" id="otherExpensesRate" value="0" step="any" required>
+          <label class="fieldDescription" style="font-size: small;">as % of home value (or flat, for vals >1)</label><br>
+        </div>
+
+          <div class="input-group">
+          <label class="formLabel" style="color: orange">Appreciation Rate:</label>
+          <input class="formbox" type="number" id="appreciationRate" value=".025" step="any" required>
+          <label class="fieldDescription" style="font-size: small;">as % of home value (or flat, for vals >1)</label><br>
+        </div>
+
+        </div>
+        <div class="btn form-submit">
+          <input type="submit" value="Calculate!">
+        </div>
       </form>
     </section>
 
+    <section id="irr">
+
+    </section>
     <table id="outputTable">
       <thead>
         <tr>
@@ -97,12 +144,21 @@
     <!-- Details -->
     <section class="section contact center" id="details">
       <p class="about__desc">
-        Assumptions and limitations: <br><br>
+        How to use this tool: <br><br>
+      </p>
+      <p class="about__desc__small" style="color: orange">
+        &bull;&nbsp;&nbsp;For rates in orange, switch to fixed annual amounts by using absolute values greater than 1.
+        <br> e.g. 1000 = $1000 per year; .05 = 5% of home value per year. <br>
       </p>
       <p class="about__desc__small">
-        &bull;&nbsp;&nbsp;Profit to date is expressed excluding your down payment, which is considered outside as an initial investment.<br>
-        &bull;&nbsp;&nbsp;Inflation is not considered, but can be accurately represented by subtracting the inflation rate from the appreciation rate.<br>
-        &bull;&nbsp;&nbsp;"Years b/w rent adjustment" denotes how often rent is raised, e.g. every 1, 2, 3... years. Constant rents will ignore this property, but both constant and variable rents will be affected by vacancy rates.<br>
+        &bull;&nbsp;&nbsp;All rates are annualized unless denoted otherwise.<br>
+        &bull;&nbsp;&nbsp;Profit to date is expressed excluding your down payment, which is considered outside as an
+        initial investment.<br>
+        &bull;&nbsp;&nbsp;Inflation is not considered, but can be accurately represented by subtracting the inflation
+        rate from the appreciation rate.<br>
+        &bull;&nbsp;&nbsp;"Years b/w rent adjustment" denotes how often rent is raised, e.g. every 1, 2, 3... years.
+        Constant rents will ignore this property, but both constant and variable rents will be affected by vacancy
+        rates.<br>
       </p>
     </section>
     <!-- Contact -->

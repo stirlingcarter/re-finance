@@ -208,7 +208,7 @@ window.onload = function() {
         //add new section to display irr above the table 
         let irrSection = document.getElementById("irr");
         irrSection.innerHTML = "";
-        let irrHeader = document.createElement("h2");
+        let irrHeader = document.createElement("h1");
         irrHeader.textContent = "IRR: " + irr;
         irrSection.appendChild(irrHeader);
 

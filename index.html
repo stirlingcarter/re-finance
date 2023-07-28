@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio" />
+  <meta name="description" content="HomeCalc.io: A simple real estate IRR and cash flow calculator" />
+  <meta name="keywords" content="HomeCalc, Real Estate, Cash Flow, IRR, Simple, Home Calculator" />
+  <link rel="canonical" href="https://www.homecalc.io/" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.homecalc.io/">
+  <meta property="og:title" content="HomeCalc.io">
+  <meta property="og:description" content="HomeCalc.io: A simple real estate IRR and cash flow calculator">
+  <meta property="og:image" content="https://www.homecalc.io/path-to-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.homecalc.io/">
+  <meta property="twitter:title" content="HomeCalc.io">
+  <meta property="twitter:description" content="HomeCalc.io: A simple real estate IRR and cash flow calculator">
+  <meta property="twitter:image" content="https://www.homecalc.io/path-to-image.jpg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/fa62c117c7.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="styles.css" />
-  <title>RE calc</title>
+  <title>HomeCalc.io</title>
 </head>
 
 <body class="light" id="top">
@@ -40,8 +58,6 @@
   </header>
 
   <main>
-    <!-- About -->
-
 
     <div class="about center">
       <h1>HomeCalc</h1>
@@ -129,92 +145,11 @@
 
 
       <div class="btn  about form-submit">
-        <input type="submit" value="CALCULATE">
+        <input type="submit" style="padding-top: 1em;"value="Calculate">
       </div>
 
     </form>
 
-
-
-
-    <!-- 
-    <section class="calculator center" id="calculator">
-      <form id="calcForm">
-        <div class="form-inputs">
-
-
-          <div class="input-group">
-            <label class="formLabel">Principle Amount:</label>
-            <input class="formbox" type="number" id="principle" value="240000" step="any" required>
-            <label class="fieldDescription">Sale price of your home, minus down payment </label><br>
-          </div>
-
-<div class="input-group">
-          <label class="formLabel">Down Payment: </label>
-          <input class="formbox" type="number" id="downPayment" value="60000" step="any" required>
-          <label class="fieldDescription" style="font-size: small;">Your initial down payment </label><br>
-        </div>
-
-          <div class="input-group">
-          <label class="formLabel">Total Tax Rate: </label>
-          <input class="formbox" type="number" id="taxRate" value="0.0125" step="any" required>
-          <label class="fieldDescription" style="font-size: small;">Annual federal taxes, plus any local taxes </label><br>
-        </div>
-
-          <div class="input-group">
-          <label class="formLabel">Insurance Rate: </label>
-          <input class="formbox" type="number" id="insuranceRate" value="0.003" step="any" required>
-          <label class="fieldDescription" style="font-size: small;">Annual home insurance rate</label><br>
-        </div>
-
-          <div class="input-group">
-          <label class="formLabel">Interest Rate: </label>
-          <input class="formbox" type="number" id="loanInterestRate" value=".065" step="any" required>
-          <label class="fieldDescription" style="font-size: small;">Your loan interest rate</label><br>
-        </div>
-
-          <div class="input-group">
-          <label class="formLabel">Vacancy Rate: </label>
-          <input class="formbox" type="number" id="vacancyRate" value=".1" step="any" required>
-          <label class="fieldDescription" style="font-size: small;">Vacancy rate</label><br>
-        </div>
-
-          <div class="input-group">
-          <label class="formLabel">Rent Raise Freq.:</label>
-          <input class="formbox" type="number" id="rentalAppreciationInterval" value="1" step="1" required>
-          <label class="fieldDescription" style="font-size: small;">Years between adjusting rent to market</label><br>
-        </div>
-
-          <div class="input-group">
-          <label class="formLabel" style="color: orange">Maintenance Rate:</label>
-          <input class="formbox" type="number" id="maintenanceRate" value=".0067" step="any" required>
-          <label class="fieldDescription" style="font-size: small;">as % of home value, or flat rate<span style="color: orange;">*</span></label><br>
-        </div>
-
-          <div class="input-group">
-          <label class="formLabel" style="color: orange">Rental Profit Rate:</label>
-          <input class="formbox" type="number" id="rentProfitRate" value=".008" step="any" required>
-          <label class="fieldDescription" style="font-size: small;">as MONTHLY % of home value, or flat rate<span style="color: orange;">*</span></label><br>
-        </div>
-
-          <div class="input-group">
-          <label class="formLabel" style="color: orange">Other Expenses Rate:</label>
-          <input class="formbox" type="number" id="otherExpensesRate" value="0" step="any" required>
-          <label class="fieldDescription" style="font-size: small;">as % of home value, or flat rate<span style="color: orange;">*</span></label><br>
-        </div>
-
-          <div class="input-group">
-          <label class="formLabel" style="color: orange">Appreciation Rate:</label>
-          <input class="formbox" type="number" id="appreciationRate" value=".025" step="any" required>
-          <label class="fieldDescription" style="font-size: small;">as % of home value, or flat rate<span style="color: orange;">*</span></label><br>
-        </div>
-
-        </div>
-        <div class="btn form-submit">
-          <input type="submit" value="Calculate!">
-        </div>
-      </form>
-    </section> -->
 
     <section id="irr">
 
@@ -251,7 +186,7 @@
       </p>
     </section>
     <!-- Contact -->
-    <section class="section contact center" id="contact">
+    <section style="padding-top: 2em;"class="section contact center" id="contact">
       <h2 class="section__title">Contact</h2>
       <a href="mailto:stirlingcarter@gmail.com">
         <span class="btn btn--outline">Email me</span>

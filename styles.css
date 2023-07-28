@@ -309,9 +309,9 @@ main {
 
 input[type="submit"] {
   transition: 0.3s;
-  color: #bdbddd;
-  font-family: inherit;
-  font-size: inherit;
+  color: #CDCCFF;
+  font-family: "Poppins", sans-serif;
+
   font-weight: 500;
   font-size: 4em;
 }

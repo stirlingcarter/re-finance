@@ -310,6 +310,10 @@ main {
 input[type="submit"] {
   transition: 0.3s;
   color: #bdbddd;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  font-size: 4em;
 }
 
 input[type="submit"]:hover {
@@ -411,7 +415,7 @@ input[type="submit"]:active {
   justify-content: center;
   align-items: center;
   padding-bottom: 2em;
-  font-size: 1.5rem;
+  font-style: bold;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
